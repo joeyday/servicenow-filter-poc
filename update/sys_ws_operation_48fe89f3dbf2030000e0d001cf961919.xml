@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>GET</http_method>
+        <name>Count</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+	if (request.queryParams.filter != null) {
+		var filter = new GlideRecord('x_10559_filterpoc_filter');
+		if (filter.get(request.queryParams.filter.toString())) {
+			var ga = new GlideAggregate(filter.getValue('table'));
+			if (filter.getValue('query') != '') {
+				ga.addEncodedQuery(filter.getValue('query'));
+			}
+			ga.addAggregate('COUNT');
+			ga.query();
+
+			if (ga.next()) {
+				return ga.getAggregate('COUNT');
+			}
+		}
+	}
+	return 0;
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_10559_filterpoc/filter/count</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/count</relative_path>
+        <request_example/>
+        <requires_acl_authorization>false</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-09 16:31:18</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>48fe89f3dbf2030000e0d001cf961919</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Count</sys_name>
+        <sys_package display_value="Filter POC" source="x_10559_filterpoc">583b5627db32030000e0d001cf961908</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Filter POC">583b5627db32030000e0d001cf961908</sys_scope>
+        <sys_update_name>sys_ws_operation_48fe89f3dbf2030000e0d001cf961919</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-09 16:31:18</sys_updated_on>
+        <web_service_definition display_value="Filter">a84ec5f3dbf2030000e0d001cf961902</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

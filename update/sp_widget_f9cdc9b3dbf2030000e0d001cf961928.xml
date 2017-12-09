@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function ($http, spUtil, $scope) {
+
+	var c = this;
+
+	c.getCount = function () {
+		var endpoint = '/api/x_10559_filterpoc/filter/count?filter=' + c.data.filter;
+		$http.get(endpoint).success(function (response) {
+			c.data.count = response.result;
+		});
+	};
+
+	
+	c.getCount();
+	
+	spUtil.recordWatch($scope, c.data.table, c.data.query, function (name, data) {
+		console.log(c.data.name + ' received record watch broadcast');
+		console.log(name);
+		console.log(data);
+		console.log($scope);
+		c.getCount();
+	});
+
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>filter</id>
+        <internal>false</internal>
+        <link/>
+        <name>Filter</name>
+        <option_schema>[{"displayValue":"Filter","name":"filter","label":"Filter","type":"reference","value":"x_10559_filterpoc_filter","ed":{"reference":"x_10559_filterpoc_filter"}}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	
+	var filter = new GlideRecord('x_10559_filterpoc_filter');
+	filter.get(options.filter.toString());
+	
+	data.filter = filter.getValue('sys_id');
+	data.name = filter.getValue('name');
+	data.table = filter.getValue('table');
+	data.query = filter.getValue('query');
+	data.count = '';
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-09 16:23:40</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>f9cdc9b3dbf2030000e0d001cf961928</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>Filter</sys_name>
+        <sys_package display_value="Filter POC" source="x_10559_filterpoc">583b5627db32030000e0d001cf961908</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Filter POC">583b5627db32030000e0d001cf961908</sys_scope>
+        <sys_update_name>sp_widget_f9cdc9b3dbf2030000e0d001cf961928</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-09 17:20:08</sys_updated_on>
+        <template><![CDATA[<div>
+  <p>{{data.name}} ({{data.count}})</p>
+</div>]]></template>
+    </sp_widget>
+</record_update>
