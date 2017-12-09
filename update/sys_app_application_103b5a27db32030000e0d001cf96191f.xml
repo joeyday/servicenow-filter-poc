@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_app_application">
+    <sys_app_application action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category/>
+        <description/>
+        <device_type>browser</device_type>
+        <hint/>
+        <name>Filter POC</name>
+        <order/>
+        <roles>x_10559_filterpoc.user</roles>
+        <sys_class_name>sys_app_application</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-09 03:23:17</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>103b5a27db32030000e0d001cf96191f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Filter POC</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Filter POC" source="x_10559_filterpoc">583b5627db32030000e0d001cf961908</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Filter POC">583b5627db32030000e0d001cf961908</sys_scope>
+        <sys_update_name>sys_app_application_103b5a27db32030000e0d001cf96191f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-09 03:23:19</sys_updated_on>
+        <title>Filter POC</title>
+        <view_name/>
+    </sys_app_application>
+</record_update>
